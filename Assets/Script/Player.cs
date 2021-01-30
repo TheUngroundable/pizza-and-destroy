@@ -26,10 +26,22 @@ public class Player : MonoBehaviour
             Debug.DrawRay(transform.position, fwd*1.5f , Color.green);
             if (Physics.Raycast(transform.position, fwd, out hit,1.5f))
             {
-                Debug.Log("cacaca");
-                Debug.Log(hit.transform.name);
                 if(hit.transform.tag=="door")
-                     Debug.Log("ketched");
+                { 
+                    if(Input.GetKeyDown("space"))
+                    {
+                        Debug.Log("DOOOOR");   
+                    }
+                   
+                }
+                     
+                if(hit.transform.tag=="InteractableObject")
+                {
+                    if(Input.GetKeyDown("space"))
+                    {
+                         Debug.Log("OBJECTS");   
+                    }
+                }
             }
     }
 
