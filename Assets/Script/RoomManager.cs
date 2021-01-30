@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
     public GameObject demoRoom;
     public GameObject roomPrefab;
     public List<Room> rooms = new List<Room>();
-
+    public float timeRemaining = 10;
+    public Text timerUI;
+    public int winMoney=500;
+    public Player pl;
+    private bool gameStarted=false;
     void Start()
     {
         InstanceFirstRoom();
@@ -40,9 +45,51 @@ public class RoomManager : MonoBehaviour
        
     }
 
+    public void Update()
+    {
+        if(gameStarted)
+        {
+            if (timeRemaining > 0  )
+            {
+                timeRemaining -= Time.deltaTime;
+                timerUI.text = timeRemaining.ToString("f0");
+            }
+            else 
+            {
+                Debug.Log("fine parza");
+                EndGame();
+            }
+        }
+    }
+
     public void StartGame()
     {
+         rooms[0].transform.GetChild(10).gameObject.SetActive(false);
+        StartCoroutine(StartGameAfterSeconds());
+    }
+
+    public void EndGame()
+    {
+        if(pl.wallet >= winMoney)
+        {
+            //vinci
+            Debug.Log("VINTOOO");
+        }
+        else
+        {
+            //hai perso
+            Debug.Log("PERSOOO");
+        }
+    }
+
+    IEnumerator StartGameAfterSeconds()
+    {
+        rooms[0].transform.GetChild(11).gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        //inizia la partita , le porte si abilitano ,iniza musica e gli oggetti in scena di abilitano
+        rooms[0].transform.GetChild(11).gameObject.SetActive(false);
         rooms[0].transform.GetChild(8).gameObject.SetActive(false);
+        gameStarted = true;
     }
 
 
