@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Vector3 moveDirection;
 
     public Rigidbody rb;
+    private float targetAngle;
 
     // Using the Awake function to set the references
     void Awake()
@@ -27,9 +28,15 @@ public class Player : MonoBehaviour
     {
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(hAxis, 0f, vAxis);
-        rb.position += movement * moveSpeed * Time.deltaTime;
-        float targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+
+        Vector3 direction = new Vector3(hAxis, 0f, vAxis).normalized;
+        if(direction.magnitude >= 0.1f) {
+            Vector3 movement = new Vector3(hAxis, 0f, vAxis);
+            rb.position += movement * moveSpeed * Time.deltaTime;
+            targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+        }
+
+        
     }
 }
