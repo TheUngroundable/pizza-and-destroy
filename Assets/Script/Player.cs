@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     public AudioClip[] randomTaunts;
     public AudioClip topolino;
 
+    public float tauntsProbability = 1f;
+
     // Using the Awake function to set the references
     void Awake()
     {
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
     {
         ManageWalletUI();
         ManageRaycast();
+        ManageTaunts();
     }
    
     void Move ()
@@ -116,5 +119,15 @@ public class Player : MonoBehaviour
     }
     void ManageWalletUI(){
         walletText.text = "Wallet "+wallet;
+    }
+    void ManageTaunts(){
+        float playProbability = Random.Range(0f, 100.0f);
+        Debug.Log(playProbability);
+        if(!audioSource.isPlaying && playProbability < (tauntsProbability / 10)){
+            int randomIndex = (int) (Random.Range(0f, 10.0f) % randomTaunts.Length);
+            AudioClip randomTaunt = randomTaunts[randomIndex];
+            audioSource.clip = randomTaunt;
+            audioSource.Play();
+        }
     }
 }
