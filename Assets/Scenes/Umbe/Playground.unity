@@ -1950,22 +1950,6 @@ PrefabInstance:
       propertyPath: walletText
       value: 
       objectReference: {fileID: 1425146237}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: steps.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: steps.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: e163a37fb268d46cdab51bff98e326ec, type: 3}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: steps.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 108fd77687f7e415aa640f016d58a98a, type: 3}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: steps.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: b996fc13e249b4123ab57f30e0c28aec, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e39c029ff866044359be61e56ead55bf, type: 3}
 --- !u!1001 &4994225088220061333
