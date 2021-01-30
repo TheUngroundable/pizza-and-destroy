@@ -27,12 +27,18 @@ public class InteractableObject : MonoBehaviour
             if(!collidedWith){
                 player.wallet -= value;
                 collidedWith = true;
+                if(isObjectHighlyValuable){
+                    player.PlayWorried();
+                }
             }
         } else if(collisionGameObject.tag == "InteractableObject"){
             InteractableObject interactableObject = collisionGameObject.GetComponent<InteractableObject>();
             if(!interactableObject.collidedWith && !player.playerIsGrabbing){
                 interactableObject.collidedWith = true;
                 player.wallet -= interactableObject.value;
+                if(interactableObject.isObjectHighlyValuable){
+                    player.PlayWorried();
+                }
             }
         }
     }

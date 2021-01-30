@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public AudioClip[] randomPickUp;
     public AudioClip[] randomThrow;
     public AudioClip[] foundMoney;
+    public AudioClip[] worried;
 
     public float tauntsProbability = 1f;
 
@@ -158,6 +159,14 @@ public class Player : MonoBehaviour
         AudioClip foundMoneySound = foundMoney[randomIndex];
         audioSource.Stop();
         audioSource.clip = foundMoneySound;
+        audioSource.Play();
+    }
+
+    public void PlayWorried(){
+        int randomIndex = (int) (Random.Range(0f, 10.0f) % worried.Length);
+        AudioClip worriedSound = worried[randomIndex];
+        audioSource.Stop();
+        audioSource.clip = worriedSound;
         audioSource.Play();
     }
 }

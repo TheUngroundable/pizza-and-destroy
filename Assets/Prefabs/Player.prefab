@@ -162,6 +162,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1d1a007b28e034428b71253d3a1e8cda, type: 3}
   - {fileID: 8300000, guid: 2990225c74fff48d6b66717960a4c3fc, type: 3}
   - {fileID: 8300000, guid: fcdff9bbe95a2432dbf53a65433b7054, type: 3}
+  worried:
+  - {fileID: 8300000, guid: cecd5c249e8ca4caeb0ee6dcbf3351de, type: 3}
+  - {fileID: 8300000, guid: f338e1f0293be491da7039d38be92f69, type: 3}
+  - {fileID: 8300000, guid: 6a1ba26e18e234ab89256fd977c7dc10, type: 3}
+  - {fileID: 8300000, guid: e001b1583d47240c2af28a9e0cae90f1, type: 3}
+  - {fileID: 8300000, guid: 9bb4e81602ca64bfb9a84d9a4547b587, type: 3}
+  - {fileID: 8300000, guid: d808961bf59e6405090e237734a2a568, type: 3}
+  - {fileID: 8300000, guid: 6eeb07eca2a35425e8fa9fb8ebfe7610, type: 3}
+  - {fileID: 8300000, guid: dde5350a63784470d91adff58ec4fdeb, type: 3}
+  - {fileID: 8300000, guid: b82ccc1b05e534d9fb4010707419f4d5, type: 3}
+  - {fileID: 8300000, guid: e2478dd84dae346c88c91d22f14cc936, type: 3}
+  - {fileID: 8300000, guid: 7dba552c21d9f45b9bbfa4b60d9c48f5, type: 3}
+  - {fileID: 8300000, guid: 91aaefd8f397a421183170ea1c84554f, type: 3}
   tauntsProbability: 1
 --- !u!82 &480462641
 AudioSource:
