@@ -10,9 +10,12 @@ public class InteractableObject : MonoBehaviour
     public bool collidedWith;
     private bool isObjectHighlyValuable;
     public Player player;
+    AudioSource audioSource;
+    public AudioClip[] collisionSounds;
 
     public void Start(){
         player = GameObject.FindObjectOfType<Player>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Awake(){
@@ -26,8 +29,10 @@ public class InteractableObject : MonoBehaviour
         
     }
     
+    
     void OnCollisionEnter(Collision collision){
         GameObject collisionGameObject = collision.gameObject;
+        PlayCollisionSounds();
         if(collisionGameObject.tag == "Player"){
             if(!collidedWith){
                 player.wallet -= value;
@@ -49,5 +54,9 @@ public class InteractableObject : MonoBehaviour
             }
         }
     }
-
+    void PlayCollisionSounds(){
+        int randomIndex = (int) (Random.Range(0f, 10.0f) % collisionSounds.Length);
+        AudioClip randomCollisionSounds = collisionSounds[randomIndex];
+        audioSource.PlayOneShot(randomCollisionSounds, 0.3f);
+    }
 }
