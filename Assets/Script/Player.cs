@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     }
 
     void GrabbingLogics(){
-        if(Input.GetKey("space") && heldObject == null){
+        /* if(Input.GetKey("space") && heldObject == null){
             playerIsGrabbing = true;
         }
         if(Input.GetKeyUp("space") && heldObject != null){
@@ -83,9 +83,9 @@ public class Player : MonoBehaviour
             PlayThrowSound();
     
             playerIsGrabbing = false;
-        }
+        } */
 
-        /* if(Input.GetKeyUp("space")){
+        if(Input.GetKeyUp("space")){
             if(heldObject == null){
                 playerIsGrabbing = true;
             } else {
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
                 ThrowHeldObject();
                 PlayThrowSound();
             }
-        } */
+        }
     }
     
     void ThrowHeldObject(){
