@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     public AudioClip earningMoney;
     public AudioClip losingMoney;
+    public AudioClip[] steps;
 
     public float tauntsProbability = 1f;
 
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        InvokeRepeating("PlayStepsSound", 0.1f, 0.3f);
     }
 
     void FixedUpdate()
@@ -135,42 +137,48 @@ public class Player : MonoBehaviour
         if(!audioSource.isPlaying && playProbability < (tauntsProbability / 10)){
             int randomIndex = (int) (Random.Range(0f, 10.0f) % randomTaunts.Length);
             AudioClip randomTaunt = randomTaunts[randomIndex];
-            PlaySound(randomTaunt, true);
+            PlaySound(randomTaunt);
         }
     }
 
     void PlayPickUpSound(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % randomPickUp.Length);
         AudioClip randomPickUpSound = randomPickUp[randomIndex];
-        PlaySound(randomPickUpSound, true);
+        PlaySound(randomPickUpSound);
     }
 
     void PlayThrowSound(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % randomThrow.Length);
         AudioClip randomThrowSound = randomThrow[randomIndex];
-        PlaySound(randomThrowSound, true);
+        PlaySound(randomThrowSound);
     }
 
     void PlayFoundMoney(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % foundMoney.Length);
         AudioClip foundMoneySound = foundMoney[randomIndex];
-        PlaySound(foundMoneySound, true);
+        PlaySound(foundMoneySound);
     }
 
     public void PlayWorried(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % worried.Length);
         AudioClip worriedSound = worried[randomIndex];
-        PlaySound(worriedSound, true);
+        PlaySound(worriedSound);
     }
     public void PlayEarningMoney(){
-        PlaySound(earningMoney, true);
+        PlaySound(earningMoney);
     }
 
     public void PlayLosingMoney(){
-        PlaySound(losingMoney, true);
+        PlaySound(losingMoney);
     }
 
-    public void PlaySound(AudioClip audioClip, bool stopFirst){
+    public void PlayStepsSound(){
+        int randomIndex = (int) (Random.Range(0f, 10.0f) % steps.Length);
+        AudioClip randomStepsSound = steps[randomIndex];
+        PlaySound(randomStepsSound);
+    }
+
+    public void PlaySound(AudioClip audioClip){
         audioSource.PlayOneShot(audioClip, 0.7F);
     }
     
