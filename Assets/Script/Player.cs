@@ -115,6 +115,7 @@ public class Player : MonoBehaviour
             { 
                 if(Input.GetKeyDown("space"))
                 {
+                    hit.transform.GetComponent<Door>().PlayOpenSound();
                     hit.transform.gameObject.SetActive(false);
                 }
             }  
@@ -134,7 +135,7 @@ public class Player : MonoBehaviour
     }
     void PlayTaunts(){
         float playProbability = Random.Range(0f, 100.0f);
-        if(!audioSource.isPlaying && playProbability < (tauntsProbability / 10)){
+        if(!audioSource.isPlaying && playProbability < (tauntsProbability / 5)){
             int randomIndex = (int) (Random.Range(0f, 10.0f) % randomTaunts.Length);
             AudioClip randomTaunt = randomTaunts[randomIndex];
             PlaySound(randomTaunt);
