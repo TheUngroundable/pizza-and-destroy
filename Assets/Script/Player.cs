@@ -17,20 +17,23 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate()
-    {
-        Move();
 
-            RaycastHit hit;   
-            Vector3 fwd = transform.TransformDirection(Vector3.forward);
+    void Update()
+    {
+        RaycastHit hit;   
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
             Debug.DrawRay(transform.position, fwd*1.5f , Color.green);
             if (Physics.Raycast(transform.position, fwd, out hit,1.5f))
             {
+
+                 Debug.Log(hit.transform.name);   
                 if(hit.transform.tag=="door")
                 { 
+                   
                     if(Input.GetKeyDown("space"))
                     {
                         Debug.Log("DOOOOR");   
+                        hit.transform.gameObject.SetActive(false);
                     }
                    
                 }
@@ -43,6 +46,10 @@ public class Player : MonoBehaviour
                     }
                 }
             }
+    }
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void Move ()

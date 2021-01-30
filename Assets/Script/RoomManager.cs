@@ -22,6 +22,7 @@ public class RoomManager : MonoBehaviour
         Room rm = curRoom.GetComponent<Room>();
         rm.EnableObjects();
         rm.DeleteTriggers();
+        rm.ShowDoors();   
         rooms.Add(rm);
 
         curRoom = null;
