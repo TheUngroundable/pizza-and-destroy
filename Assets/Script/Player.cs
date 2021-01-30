@@ -78,11 +78,10 @@ public class Player : MonoBehaviour
         if(Input.GetKey("space") && heldObject == null){
             playerIsGrabbing = true;
         }
-        if(Input.GetKeyUp("space") && playerIsGrabbing) {
-            if(heldObject != null){
-                ThrowHeldObject();
-                PlayThrowSound();
-            } 
+        if(Input.GetKeyUp("space") && heldObject != null){
+            ThrowHeldObject();
+            PlayThrowSound();
+    
             playerIsGrabbing = false;
         }
 
