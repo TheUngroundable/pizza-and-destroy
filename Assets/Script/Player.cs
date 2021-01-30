@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    voic ManageRaycast(){
+    void ManageRaycast(){
         RaycastHit hit;   
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
         if (Physics.Raycast(transform.position, fwd, out hit,1.5f))
