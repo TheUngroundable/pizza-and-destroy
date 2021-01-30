@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     private Rigidbody heldObjectRB;
 
     public int wallet = 0;
+    public Text walletText;
 
     // Using the Awake function to set the references
     void Awake()
@@ -32,6 +34,8 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        walletText.text = "Wallet "+wallet;
+
         RaycastHit hit;   
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
             if (Physics.Raycast(transform.position, fwd, out hit,1.5f))
