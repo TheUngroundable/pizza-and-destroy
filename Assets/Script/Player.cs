@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
             playerIsGrabbing = false;
         } */
 
-        if(Input.GetKeyUp("space")){
+        if(Input.GetKeyDown("space")){
             if(heldObject == null){
                 playerIsGrabbing = true;
             } else {
