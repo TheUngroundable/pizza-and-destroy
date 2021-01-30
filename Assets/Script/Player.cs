@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
             targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
         }
-
         
     }
 }
