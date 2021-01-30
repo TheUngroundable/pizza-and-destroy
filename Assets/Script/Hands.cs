@@ -31,6 +31,7 @@ public class Hands : MonoBehaviour
         heldObject.transform.SetParent(null);
         heldObjectRB.isKinematic = false;
         heldObjectRB.AddForce(Vector3.forward * shootingSpeed, ForceMode.Impulse);
+        heldObject.GetComponent<InteractableObject>().hasBeenThrown = true;
         heldObject = null;
         heldObjectRB = null;
     }

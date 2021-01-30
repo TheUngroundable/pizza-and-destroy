@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    public bool hasBeenThrown = false;
+    bool containsMoney = false;
+    public float objectDropProbability;
+    public GameObject moneyPrefab;
+    void Start(){
+        if(Random.Range(-10.0f, 10.0f) % objectDropProbability == 0){
+            containsMoney = true;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -18,7 +22,9 @@ public class InteractableObject : MonoBehaviour
  
     private void OnCollisionEnter(Collision collision)
     {
-        
+        if(hasBeenThrown && containsMoney){
+            Instantiate(moneyPrefab, transform.position, Quaternion.identity);
+        }
     }
  
 }
