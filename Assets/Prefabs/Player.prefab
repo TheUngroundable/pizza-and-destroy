@@ -177,6 +177,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 91aaefd8f397a421183170ea1c84554f, type: 3}
   earningMoney: {fileID: 8300000, guid: 88b832f044742420498cce577affa1d7, type: 3}
   losingMoney: {fileID: 8300000, guid: 844df2e7bdbb54e0ba0323b72d54199a, type: 3}
+  steps:
+  - {fileID: 8300000, guid: e163a37fb268d46cdab51bff98e326ec, type: 3}
+  - {fileID: 8300000, guid: 108fd77687f7e415aa640f016d58a98a, type: 3}
+  - {fileID: 8300000, guid: b996fc13e249b4123ab57f30e0c28aec, type: 3}
   tauntsProbability: 1
 --- !u!82 &480462641
 AudioSource:
