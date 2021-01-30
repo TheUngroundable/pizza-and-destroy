@@ -23,7 +23,9 @@ public class Player : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip[] randomTaunts;
-    public AudioClip topolino;
+
+    public AudioClip[] randomPickUp;
+    public AudioClip[] randomThrow;
 
     public float tauntsProbability = 1f;
 
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
     {
         ManageWalletUI();
         ManageRaycast();
-        ManageTaunts();
+        PlayTaunts();
     }
    
     void Move ()
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
         if(Input.GetKeyUp("space") && playerIsGrabbing) {
             if(heldObject != null){
                 ThrowHeldObject();
+                PlayThrowSound();
             } 
             playerIsGrabbing = false;
         }
@@ -113,6 +116,7 @@ public class Player : MonoBehaviour
                 InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
                 if(playerIsGrabbing && heldObject == null){
                     PickUpObject(hit);
+                    PlayPickUpSound();
                 }
             }
         }
@@ -120,7 +124,7 @@ public class Player : MonoBehaviour
     void ManageWalletUI(){
         walletText.text = "Wallet "+wallet;
     }
-    void ManageTaunts(){
+    void PlayTaunts(){
         float playProbability = Random.Range(0f, 100.0f);
         Debug.Log(playProbability);
         if(!audioSource.isPlaying && playProbability < (tauntsProbability / 10)){
@@ -129,5 +133,21 @@ public class Player : MonoBehaviour
             audioSource.clip = randomTaunt;
             audioSource.Play();
         }
+    }
+
+    void PlayPickUpSound(){
+        int randomIndex = (int) (Random.Range(0f, 10.0f) % randomPickUp.Length);
+        AudioClip randomPickUpSound = randomPickUp[randomIndex];
+        audioSource.Stop();
+        audioSource.clip = randomPickUpSound;
+        audioSource.Play();
+    }
+
+    void PlayThrowSound(){
+        int randomIndex = (int) (Random.Range(0f, 10.0f) % randomThrow.Length);
+        AudioClip randomThrowSound = randomThrow[randomIndex];
+        audioSource.Stop();
+        audioSource.clip = randomThrowSound;
+        audioSource.Play();
     }
 }

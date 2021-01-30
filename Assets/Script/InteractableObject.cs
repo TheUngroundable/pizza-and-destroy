@@ -6,10 +6,14 @@ public class InteractableObject : MonoBehaviour
 {
 
     public int value;
+    public int valueThreshold = 100;
     public bool collidedWith;
+    private bool isObjectHighlyValuable;
     public Player player;
-    void Start(){
-        
+    void Awake(){
+        if(value > valueThreshold){
+            isObjectHighlyValuable = true;
+        }
     }
 
     void Update()
