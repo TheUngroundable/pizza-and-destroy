@@ -175,6 +175,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e2478dd84dae346c88c91d22f14cc936, type: 3}
   - {fileID: 8300000, guid: 7dba552c21d9f45b9bbfa4b60d9c48f5, type: 3}
   - {fileID: 8300000, guid: 91aaefd8f397a421183170ea1c84554f, type: 3}
+  earningMoney: {fileID: 8300000, guid: 88b832f044742420498cce577affa1d7, type: 3}
+  losingMoney: {fileID: 8300000, guid: 844df2e7bdbb54e0ba0323b72d54199a, type: 3}
   tauntsProbability: 1
 --- !u!82 &480462641
 AudioSource:

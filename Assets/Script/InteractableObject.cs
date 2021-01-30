@@ -10,6 +10,11 @@ public class InteractableObject : MonoBehaviour
     public bool collidedWith;
     private bool isObjectHighlyValuable;
     public Player player;
+
+    public void Start(){
+        player = GameObject.FindObjectOfType<Player>();
+    }
+
     void Awake(){
         if(value > valueThreshold){
             isObjectHighlyValuable = true;
@@ -26,6 +31,7 @@ public class InteractableObject : MonoBehaviour
         if(collisionGameObject.tag == "Player"){
             if(!collidedWith){
                 player.wallet -= value;
+                player.PlayLosingMoney();
                 collidedWith = true;
                 if(isObjectHighlyValuable){
                     player.PlayWorried();
@@ -36,6 +42,7 @@ public class InteractableObject : MonoBehaviour
             if(!interactableObject.collidedWith && !player.playerIsGrabbing){
                 interactableObject.collidedWith = true;
                 player.wallet -= interactableObject.value;
+                player.PlayLosingMoney();
                 if(interactableObject.isObjectHighlyValuable){
                     player.PlayWorried();
                 }

@@ -20,7 +20,6 @@ public class Room : MonoBehaviour
    public void EnableObjects()
    {
        int rnd = Random.Range(0,roomTypes.Length);
-       Debug.Log(rnd);
        roomTypes[rnd].SetActive(true);
    }
 

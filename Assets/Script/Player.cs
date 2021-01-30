@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     public AudioClip[] foundMoney;
     public AudioClip[] worried;
 
+    public AudioClip earningMoney;
+    public AudioClip losingMoney;
+
     public float tauntsProbability = 1f;
 
     // Using the Awake function to set the references
@@ -92,16 +95,6 @@ public class Player : MonoBehaviour
         heldObjectRB = null;
     }
 
-    void OnCollisionEnter(Collision collision){
-        GameObject collisionGameObject = collision.gameObject;
-        if(collisionGameObject.tag == "Money") {
-            Money money = collisionGameObject.GetComponent<Money>();
-            wallet += money.value;
-            Destroy(collisionGameObject);
-            PlayFoundMoney();
-        }
-    }
-
     void ManageRaycast(){
         RaycastHit hit;   
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
@@ -129,44 +122,61 @@ public class Player : MonoBehaviour
     }
     void PlayTaunts(){
         float playProbability = Random.Range(0f, 100.0f);
-        Debug.Log(playProbability);
         if(!audioSource.isPlaying && playProbability < (tauntsProbability / 10)){
             int randomIndex = (int) (Random.Range(0f, 10.0f) % randomTaunts.Length);
             AudioClip randomTaunt = randomTaunts[randomIndex];
-            audioSource.clip = randomTaunt;
-            audioSource.Play();
+            PlaySound(randomTaunt, true);
         }
     }
 
     void PlayPickUpSound(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % randomPickUp.Length);
         AudioClip randomPickUpSound = randomPickUp[randomIndex];
-        audioSource.Stop();
-        audioSource.clip = randomPickUpSound;
-        audioSource.Play();
+        PlaySound(randomPickUpSound, true);
     }
 
     void PlayThrowSound(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % randomThrow.Length);
         AudioClip randomThrowSound = randomThrow[randomIndex];
-        audioSource.Stop();
-        audioSource.clip = randomThrowSound;
-        audioSource.Play();
+        PlaySound(randomThrowSound, true);
     }
 
     void PlayFoundMoney(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % foundMoney.Length);
         AudioClip foundMoneySound = foundMoney[randomIndex];
-        audioSource.Stop();
-        audioSource.clip = foundMoneySound;
-        audioSource.Play();
+        PlaySound(foundMoneySound, true);
     }
 
     public void PlayWorried(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % worried.Length);
         AudioClip worriedSound = worried[randomIndex];
-        audioSource.Stop();
-        audioSource.clip = worriedSound;
-        audioSource.Play();
+        PlaySound(worriedSound, true);
+    }
+    public void PlayEarningMoney(){
+        PlaySound(earningMoney, true);
+    }
+
+    public void PlayLosingMoney(){
+        PlaySound(losingMoney, true);
+    }
+
+    public void PlaySound(AudioClip audioClip, bool stopFirst){
+        /* if(stopFirst){
+            audioSource.Stop();
+        }
+        /* audioSource.clip = audioClip;
+        audioSource.Play(); */
+        audioSource.PlayOneShot(audioClip, 0.7F);
+    }
+    
+    void OnCollisionEnter(Collision collision){
+        GameObject collisionGameObject = collision.gameObject;
+        if(collisionGameObject.tag == "Money") {
+            Money money = collisionGameObject.GetComponent<Money>();
+            wallet += money.value;
+            Destroy(collisionGameObject);
+            PlayEarningMoney();
+            PlayFoundMoney();
+        }
     }
 }

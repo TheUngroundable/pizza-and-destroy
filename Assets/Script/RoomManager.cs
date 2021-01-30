@@ -6,7 +6,7 @@ public class RoomManager : MonoBehaviour
 {
     public GameObject roomPrefab;
     public List<Room> rooms = new List<Room>();
-    
+
     void Start()
     {
         InstanceFirstRoom();
@@ -14,75 +14,75 @@ public class RoomManager : MonoBehaviour
 
     public void InstanceFirstRoom()
     {
-        GameObject curRoom = Instantiate(roomPrefab,transform);
-        curRoom.transform.localPosition = new Vector3(0,0,0);
+        GameObject curRoom = Instantiate(roomPrefab, transform);
+        curRoom.transform.localPosition = new Vector3(0, 0, 0);
         Room rm = curRoom.GetComponent<Room>();
         rm.EnableObjects();
         rm.DeleteTriggers();
-        rm.ShowDoors();   
+        rm.ShowDoors();
         rooms.Add(rm);
 
         curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
+        curRoom = Instantiate(roomPrefab, transform);
         curRoom.transform.localPosition = rooms[0].doorA.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
 
         curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
+        curRoom = Instantiate(roomPrefab, transform);
         curRoom.transform.localPosition = rooms[0].doorB.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
 
         curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
+        curRoom = Instantiate(roomPrefab, transform);
         curRoom.transform.localPosition = rooms[0].doorC.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
 
         curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
+        curRoom = Instantiate(roomPrefab, transform);
         curRoom.transform.localPosition = rooms[0].doorD.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
     }
 
 
-    public void EnteredRoom(Room room, string direction )
+    public void EnteredRoom(Room room, string direction)
     {
-        for (int i = 2; i < rooms.Count; i++)
+        for (int i = 3; i < rooms.Count; i++)
         {
-            if(rooms[i] != room)
+            if (rooms[i] != room)
             {
-               Destroy(rooms[i].gameObject);   
+                Destroy(rooms[i].gameObject);
             }
-        }  
-         rooms.RemoveAll(x => x != room);
-      
-        if(direction!="triggerA")
+        }
+        rooms.RemoveAll(x => x != room);
+
+        if (direction != "triggerA")
         {
-            GameObject curRoom = Instantiate(roomPrefab,transform);
+            GameObject curRoom = Instantiate(roomPrefab, transform);
             curRoom.transform.position = room.doorA.position;
             rooms.Add(curRoom.GetComponent<Room>());
         }
 
-         if(direction!="triggerB")
+        if (direction != "triggerB")
         {
-            GameObject curRoom = Instantiate(roomPrefab,transform);
+            GameObject curRoom = Instantiate(roomPrefab, transform);
             curRoom.transform.position = room.doorB.position;
             rooms.Add(curRoom.GetComponent<Room>());
         }
 
-         if(direction!="triggerC")
+        if (direction != "triggerC")
         {
-            GameObject curRoom = Instantiate(roomPrefab,transform);
+            GameObject curRoom = Instantiate(roomPrefab, transform);
             curRoom.transform.position = room.doorC.position;
             rooms.Add(curRoom.GetComponent<Room>());
         }
 
-         if(direction!="triggerD")
+        if (direction != "triggerD")
         {
-            GameObject curRoom = Instantiate(roomPrefab,transform);
+            GameObject curRoom = Instantiate(roomPrefab, transform);
             curRoom.transform.position = room.doorD.position;
             rooms.Add(curRoom.GetComponent<Room>());
         }
-        
+
     }
-   
+
 }
