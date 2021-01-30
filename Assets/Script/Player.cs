@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     public Rigidbody rb;
     private float targetAngle;
-
+    public Camera cam;
     // Using the Awake function to set the references
     void Awake()
     {
