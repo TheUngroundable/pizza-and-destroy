@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
 
     public Rigidbody rb;
     private float targetAngle;
-    public Camera cam;
+    private Vector3 movement;
+
     // Using the Awake function to set the references
     void Awake()
     {
@@ -38,12 +39,11 @@ public class Player : MonoBehaviour
         float vAxis = Input.GetAxis("Vertical");
 
         Vector3 direction = new Vector3(hAxis, 0f, vAxis).normalized;
-        if(direction.magnitude >= 0.1f) {
-            Vector3 movement = new Vector3(hAxis, 0f, vAxis);
-            rb.position += movement * moveSpeed * Time.deltaTime;
-            targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+        if(direction.magnitude >= 0.1f){
+            movement = new Vector3(hAxis, 0f, vAxis);
         }
-        
+        rb.position += transform.forward * moveSpeed * Time.deltaTime;
+        targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
+        rb.rotation = Quaternion.Euler(0f, targetAngle, 0f);
     }
 }
