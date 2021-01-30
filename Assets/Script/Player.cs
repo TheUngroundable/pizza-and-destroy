@@ -11,13 +11,24 @@ public class Player : MonoBehaviour
     private float targetAngle;
     private Vector3 movement;
 
+
+    bool playerIsGrabbing = false;
+    public float shootingSpeed = 5f;
+    public Transform heldObject;
+    private Rigidbody heldObjectRB;
+
     // Using the Awake function to set the references
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-
+    void FixedUpdate()
+    {
+        Move();
+        GrabbingLogics();
+        
+    }
     void Update()
     {
         RaycastHit hit;   
@@ -40,17 +51,16 @@ public class Player : MonoBehaviour
                      
                 if(hit.transform.tag=="InteractableObject")
                 {
-                    if(Input.GetKeyDown("space"))
-                    {
-                         Debug.Log("OBJECTS");   
+                    
+                    InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
+                    
+                    if(playerIsGrabbing){
+                        PickUpObject(hit);
                     }
                 }
             }
     }
-    void FixedUpdate()
-    {
-        Move();
-    }
+   
 
     void Move ()
     {
@@ -64,5 +74,33 @@ public class Player : MonoBehaviour
         rb.position += transform.forward * moveSpeed * Time.deltaTime;
         targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
         rb.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+    }
+
+    void PickUpObject(RaycastHit other){
+        heldObject = other.transform;
+        heldObjectRB = heldObject.GetComponent<Rigidbody>();
+        heldObjectRB.isKinematic = true;
+        other.transform.SetParent(transform);
+    }
+
+    void GrabbingLogics(){
+        if(Input.GetKey("space")){
+            playerIsGrabbing = true;
+        }
+        if(Input.GetKeyUp("space")) {
+            if(playerIsGrabbing && heldObject != null){
+                ThrowHeldObject();
+            } 
+            playerIsGrabbing = false;
+        }
+    }
+    
+    void ThrowHeldObject(){
+        heldObject.SetParent(null);
+        heldObjectRB.isKinematic = false;
+        heldObjectRB.AddForce(transform.forward * shootingSpeed, ForceMode.Impulse);
+        heldObject.GetComponent<InteractableObject>().hasBeenThrown = true;
+        heldObject = null;
+        heldObjectRB = null;
     }
 }
