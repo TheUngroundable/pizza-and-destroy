@@ -15,6 +15,7 @@ public class RoomManager : MonoBehaviour
     private bool gameStarted=false;
     void Start()
     {
+         Application.targetFrameRate = 60;
         InstanceFirstRoom();
     }
 
