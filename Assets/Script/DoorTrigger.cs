@@ -12,6 +12,7 @@ public class DoorTrigger : MonoBehaviour
         {
             room.EnableObjects();
             room.DeleteTriggers(); //distruggo trigger quando entro nella stanza cosi da non richiamare la funzione quando esco
+            room.ShowDoors();
             RoomManager rm = GameObject.FindObjectOfType<RoomManager>();
             rm.EnteredRoom(room,transform.name);
             Destroy(this.gameObject);

@@ -10,7 +10,8 @@ public class Room : MonoBehaviour
     public Transform doorC;
     public Transform doorD;
     public GameObject[] roomTypes;
-
+    public GameObject doors;
+   
    public void DeleteTriggers()
    {
        Destroy(transform.GetChild(6).gameObject);
@@ -21,5 +22,16 @@ public class Room : MonoBehaviour
        int rnd = Random.Range(0,roomTypes.Length);
        Debug.Log(rnd);
        roomTypes[rnd].SetActive(true);
+   }
+
+   public void ShowDoors()
+   {
+      StartCoroutine(WaitForOpen());
+   }
+
+   IEnumerator WaitForOpen()
+   {
+       yield return new WaitForSeconds(.3f);
+        doors.SetActive(true);
    }
 }
