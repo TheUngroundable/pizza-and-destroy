@@ -19,6 +19,17 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+
+            RaycastHit hit;   
+            Vector3 fwd = transform.TransformDirection(Vector3.forward);
+            Debug.DrawRay(transform.position, fwd*1.5f , Color.green);
+            if (Physics.Raycast(transform.position, fwd, out hit,1.5f))
+            {
+                Debug.Log("cacaca");
+                Debug.Log(hit.transform.name);
+                if(hit.transform.tag=="door")
+                     Debug.Log("ketched");
+            }
     }
 
     void Move ()

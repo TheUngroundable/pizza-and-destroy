@@ -48,7 +48,11 @@ public class Hands : MonoBehaviour
         {
            pickUpObject(other);
         }
+
     }
+
+
+    
 
     
 
