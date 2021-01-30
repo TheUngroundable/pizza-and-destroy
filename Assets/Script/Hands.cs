@@ -30,8 +30,8 @@ public class Hands : MonoBehaviour
         Debug.Log("Throw Item");
         heldObject.transform.SetParent(null);
         heldObjectRB.isKinematic = false;
-        heldObjectRB.AddForce(Vector3.forward * shootingSpeed, ForceMode.Impulse);
-        //heldObject.GetComponent<InteractableObject>().hasBeenThrown = true;
+        heldObjectRB.AddForce(transform.forward * shootingSpeed, ForceMode.Impulse);
+        heldObject.GetComponent<InteractableObject>().hasBeenThrown = true;
         heldObject = null;
         heldObjectRB = null;
     }
@@ -44,13 +44,10 @@ public class Hands : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "InteractableObject" && playerIsGrabbing)
+        InteractableObject interactableObject = other.GetComponent<InteractableObject>();
+        if (other.gameObject.tag == "InteractableObject" && playerIsGrabbing && !interactableObject.hasBeenThrown)
         {
            pickUpObject(other);
         }
     }
-
-    
-
-    
 }
