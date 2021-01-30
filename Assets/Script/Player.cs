@@ -6,9 +6,6 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 6f;            // Player's speed when walking.
     public float rotationSpeed = 6f;
-    public float jumpHeight = 10f;         // How high Player jumps
-
-    public Vector3 moveDirection;
 
     public Rigidbody rb;
     private float targetAngle;
