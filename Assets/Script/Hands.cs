@@ -49,4 +49,20 @@ public class Hands : MonoBehaviour
            pickUpObject(other);
         }
     }
+
+    
+    void OnTriggerStay(Collider other)
+    {
+            if (other.gameObject.tag == "InteractableObject" )
+            {
+             pickUpObject(other);
+             }
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        
+    }
+
+    
 }

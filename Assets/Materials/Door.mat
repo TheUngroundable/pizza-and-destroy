@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Object
+  m_Name: Door
   m_Shader: {fileID: 4800000, guid: d3b77ea8f0bbcd3478d0d85de06646bd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -73,6 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.43293878, g: 0.5231476, b: 0.6509434, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
