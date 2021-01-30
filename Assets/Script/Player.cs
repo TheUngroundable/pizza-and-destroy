@@ -119,6 +119,15 @@ public class Player : MonoBehaviour
                     hit.transform.gameObject.SetActive(false);
                 }
             }  
+             if(hit.transform.tag=="fattorino")
+            { 
+                if(Input.GetKeyDown("space"))
+                {
+                   Debug.Log("fattorinoooo0o");
+                   GameObject.FindObjectOfType<RoomManager>().StartGame();
+                }
+            }  
+
             if(hit.transform.tag=="InteractableObject")
             {
                 InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
@@ -130,6 +139,10 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+
+
+
     void ManageWalletUI(){
         walletText.text = "Wallet "+wallet;
     }

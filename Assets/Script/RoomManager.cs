@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
+    public GameObject demoRoom;
     public GameObject roomPrefab;
     public List<Room> rooms = new List<Room>();
 
@@ -14,10 +15,9 @@ public class RoomManager : MonoBehaviour
 
     public void InstanceFirstRoom()
     {
-        GameObject curRoom = Instantiate(roomPrefab, transform);
+        GameObject curRoom = Instantiate(demoRoom, transform);
         curRoom.transform.localPosition = new Vector3(0, 0, 0);
         Room rm = curRoom.GetComponent<Room>();
-        rm.EnableObjects();
         rm.DeleteTriggers();
         rm.ShowDoors();
         rooms.Add(rm);
@@ -37,10 +37,12 @@ public class RoomManager : MonoBehaviour
         curRoom.transform.localPosition = rooms[0].doorC.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
 
-        curRoom = null;
-        curRoom = Instantiate(roomPrefab, transform);
-        curRoom.transform.localPosition = rooms[0].doorD.localPosition;
-        rooms.Add(curRoom.GetComponent<Room>());
+       
+    }
+
+    public void StartGame()
+    {
+        rooms[0].transform.GetChild(8).gameObject.SetActive(false);
     }
 
 

@@ -139,6 +139,10 @@ PrefabInstance:
       value: 2.6053815
       objectReference: {fileID: 0}
     - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
       propertyPath: m_Center.x
       value: -0.000000008799171
       objectReference: {fileID: 0}
@@ -202,7 +206,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
+    - {fileID: 368201621, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
 --- !u!224 &442185360 stripped
 RectTransform:
@@ -263,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e982784032574cc42a13ab8cc20cab6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  demoRoom: {fileID: 5460954028465918534, guid: 247ac375c6437f24780af3a6522a9520, type: 3}
   roomPrefab: {fileID: 5460954028465918534, guid: 2968924987b01244780bb95ce364872b, type: 3}
   rooms: []
 --- !u!1001 &817932916
