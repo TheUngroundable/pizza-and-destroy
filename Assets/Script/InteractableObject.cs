@@ -5,26 +5,32 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
 
-    public bool hasBeenThrown = false;
-    bool containsMoney = false;
-    public float objectDropProbability;
-    public GameObject moneyPrefab;
+    public int value;
+    public bool collidedWith;
+    public Player player;
     void Start(){
-        if(Random.Range(-10.0f, 10.0f) % objectDropProbability == 0){
-            containsMoney = true;
-        }
+        
     }
 
     void Update()
     {
         
     }
- 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(hasBeenThrown && containsMoney){
-            Instantiate(moneyPrefab, transform.position, Quaternion.identity);
+    
+    void OnCollisionEnter(Collision collision){
+        GameObject collisionGameObject = collision.gameObject;
+        if(collisionGameObject.tag == "Player"){
+            if(!collidedWith){
+                player.wallet -= value;
+                collidedWith = true;
+            }
+        } else if(collisionGameObject.tag == "InteractableObject"){
+            InteractableObject interactableObject = collisionGameObject.GetComponent<InteractableObject>();
+            if(!interactableObject.collidedWith && !player.playerIsGrabbing){
+                interactableObject.collidedWith = true;
+                player.wallet -= interactableObject.value;
+            }
         }
     }
- 
+
 }

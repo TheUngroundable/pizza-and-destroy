@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public Transform heldObject;
     private Rigidbody heldObjectRB;
 
+    public int wallet = 0;
+
     // Using the Awake function to set the references
     void Awake()
     {
@@ -27,7 +29,6 @@ public class Player : MonoBehaviour
     {
         Move();
         GrabbingLogics();
-        
     }
     void Update()
     {
@@ -99,5 +100,15 @@ public class Player : MonoBehaviour
         heldObjectRB.AddForce(transform.forward * shootingSpeed, ForceMode.Impulse);
         heldObject = null;
         heldObjectRB = null;
+    }
+
+    void OnCollisionEnter(Collision collision){
+        GameObject collisionGameObject = collision.gameObject;
+        if(collisionGameObject.tag == "Money") {
+            Debug.Log("Collided with money");
+            Money money = collisionGameObject.GetComponent<Money>();
+            wallet += money.value;
+            Destroy(collisionGameObject);
+        }
     }
 }
