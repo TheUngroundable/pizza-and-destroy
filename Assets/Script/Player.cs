@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     }
 
     void GrabbingLogics(){
-        /* if(Input.GetKey("space") && heldObject == null){
+        if(Input.GetKey("space") && heldObject == null){
             playerIsGrabbing = true;
         }
         if(Input.GetKeyUp("space") && playerIsGrabbing) {
@@ -84,9 +84,9 @@ public class Player : MonoBehaviour
                 PlayThrowSound();
             } 
             playerIsGrabbing = false;
-        } */
+        }
 
-        if(Input.GetKeyUp("space")){
+        /* if(Input.GetKeyUp("space")){
             if(heldObject == null){
                 playerIsGrabbing = true;
             } else {
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
                 ThrowHeldObject();
                 PlayThrowSound();
             }
-        }
+        } */
     }
     
     void ThrowHeldObject(){
@@ -123,6 +123,7 @@ public class Player : MonoBehaviour
                 if(playerIsGrabbing && heldObject == null){
                     PickUpObject(hit);
                     PlayPickUpSound();
+                    playerIsGrabbing = false;
                 }
             }
         }
@@ -171,11 +172,6 @@ public class Player : MonoBehaviour
     }
 
     public void PlaySound(AudioClip audioClip, bool stopFirst){
-        /* if(stopFirst){
-            audioSource.Stop();
-        }
-        /* audioSource.clip = audioClip;
-        audioSource.Play(); */
         audioSource.PlayOneShot(audioClip, 0.7F);
     }
     

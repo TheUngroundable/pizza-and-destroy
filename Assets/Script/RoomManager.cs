@@ -46,7 +46,7 @@ public class RoomManager : MonoBehaviour
 
     public void EnteredRoom(Room room, string direction)
     {
-        for (int i = 3; i < rooms.Count; i++)
+        for (int i = 0; i < rooms.Count - 4; i++)
         {
             if (rooms[i] != room)
             {
