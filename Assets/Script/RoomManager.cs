@@ -19,8 +19,10 @@ public class RoomManager : MonoBehaviour
     {
         GameObject curRoom = Instantiate(roomPrefab,transform);
         curRoom.transform.localPosition = new Vector3(0,0,0);
-        curRoom.GetComponent<Room>().DeleteTriggers();
-        rooms.Add(curRoom.GetComponent<Room>());
+        Room rm = curRoom.GetComponent<Room>();
+        rm.EnableObjects();
+        rm.DeleteTriggers();
+        rooms.Add(rm);
 
         curRoom = null;
         curRoom = Instantiate(roomPrefab,transform);
