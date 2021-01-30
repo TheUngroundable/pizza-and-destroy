@@ -144,9 +144,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 348f1853ef1844b6ba854370018eb2f6, type: 3}
   - {fileID: 8300000, guid: 3dfe89956d3d645ac93b3f79518783c0, type: 3}
   - {fileID: 8300000, guid: 660d81eda206848cc894a32a34e55c10, type: 3}
-  topolino: {fileID: 0}
-  randomPickUp: []
-  randomThrow: []
+  randomPickUp:
+  - {fileID: 8300000, guid: e3b02b3150b464bfd8f426cc40c6e8e2, type: 3}
+  - {fileID: 8300000, guid: b428ec1e2fa844aab92e00dd08b1bae9, type: 3}
+  - {fileID: 8300000, guid: 2c68139e0215243df8ef0cf413dbfe40, type: 3}
+  - {fileID: 8300000, guid: a9fbc223efaf0493cbfe6c8104bd3873, type: 3}
+  - {fileID: 8300000, guid: 51c2ea9d4db7a4f2482edc300972f307, type: 3}
+  - {fileID: 8300000, guid: dd3aaf252d08a4c9cb36607ea3e89410, type: 3}
+  randomThrow:
+  - {fileID: 8300000, guid: 2d91cb89b010d49a0bbf020ccb196f4a, type: 3}
+  - {fileID: 8300000, guid: 34bc4fc4f676a43ad9a8b2422ecc5260, type: 3}
+  - {fileID: 8300000, guid: 327d51962885a4c2a9310f5daae7c9ba, type: 3}
+  - {fileID: 8300000, guid: 2588353689d044fc7954d0d8917b91b9, type: 3}
+  foundMoney:
+  - {fileID: 8300000, guid: 1bbf2bbeac33d45b6bb59974da41a1fc, type: 3}
+  - {fileID: 8300000, guid: 70a86fff95889413780c3a9a51a46b30, type: 3}
+  - {fileID: 8300000, guid: 1d1a007b28e034428b71253d3a1e8cda, type: 3}
+  - {fileID: 8300000, guid: 2990225c74fff48d6b66717960a4c3fc, type: 3}
+  - {fileID: 8300000, guid: fcdff9bbe95a2432dbf53a65433b7054, type: 3}
   tauntsProbability: 1
 --- !u!82 &480462641
 AudioSource:

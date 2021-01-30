@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     public AudioClip[] randomPickUp;
     public AudioClip[] randomThrow;
+    public AudioClip[] foundMoney;
 
     public float tauntsProbability = 1f;
 
@@ -96,6 +97,7 @@ public class Player : MonoBehaviour
             Money money = collisionGameObject.GetComponent<Money>();
             wallet += money.value;
             Destroy(collisionGameObject);
+            PlayFoundMoney();
         }
     }
 
@@ -148,6 +150,14 @@ public class Player : MonoBehaviour
         AudioClip randomThrowSound = randomThrow[randomIndex];
         audioSource.Stop();
         audioSource.clip = randomThrowSound;
+        audioSource.Play();
+    }
+
+    void PlayFoundMoney(){
+        int randomIndex = (int) (Random.Range(0f, 10.0f) % foundMoney.Length);
+        AudioClip foundMoneySound = foundMoney[randomIndex];
+        audioSource.Stop();
+        audioSource.clip = foundMoneySound;
         audioSource.Play();
     }
 }
