@@ -12,9 +12,6 @@ public class RoomManager : MonoBehaviour
         InstanceFirstRoom();
     }
 
-
-    
-
     public void InstanceFirstRoom()
     {
         GameObject curRoom = Instantiate(roomPrefab,transform);
@@ -44,33 +41,12 @@ public class RoomManager : MonoBehaviour
         curRoom = Instantiate(roomPrefab,transform);
         curRoom.transform.localPosition = rooms[0].doorD.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
-/*
-        curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
-        curRoom.transform.position = rooms[1].doorD.position;
-        rooms.Add(curRoom.GetComponent<Room>());
-
-        curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
-        curRoom.transform.position = rooms[3].doorD.position;
-        rooms.Add(curRoom.GetComponent<Room>());
-
-        curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
-        curRoom.transform.position = rooms[1].doorB.position;
-        rooms.Add(curRoom.GetComponent<Room>());
-
-        curRoom = null;
-        curRoom = Instantiate(roomPrefab,transform);
-        curRoom.transform.position = rooms[3].doorB.position;
-        rooms.Add(curRoom.GetComponent<Room>());
-        */
     }
 
 
     public void EnteredRoom(Room room, string direction )
     {
-        for (int i = 0; i < rooms.Count; i++)
+        for (int i = 2; i < rooms.Count; i++)
         {
             if(rooms[i] != room)
             {
