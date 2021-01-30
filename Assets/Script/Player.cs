@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private Vector3 movement;
 
 
-    bool playerIsGrabbing = false;
+    public bool playerIsGrabbing = false;
     public float shootingSpeed = 5f;
     public Transform heldObject;
     private Rigidbody heldObjectRB;
@@ -33,11 +33,9 @@ public class Player : MonoBehaviour
     {
         RaycastHit hit;   
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
-            Debug.DrawRay(transform.position, fwd*1.5f , Color.green);
             if (Physics.Raycast(transform.position, fwd, out hit,1.5f))
             {
 
-                 Debug.Log(hit.transform.name);   
                 if(hit.transform.tag=="door")
                 { 
                    
@@ -54,7 +52,7 @@ public class Player : MonoBehaviour
                     
                     InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
                     
-                    if(playerIsGrabbing){
+                    if(playerIsGrabbing && heldObject == null){
                         PickUpObject(hit);
                     }
                 }
@@ -84,11 +82,11 @@ public class Player : MonoBehaviour
     }
 
     void GrabbingLogics(){
-        if(Input.GetKey("space")){
+        if(Input.GetKey("space") && heldObject == null){
             playerIsGrabbing = true;
         }
-        if(Input.GetKeyUp("space")) {
-            if(playerIsGrabbing && heldObject != null){
+        if(Input.GetKeyUp("space") && playerIsGrabbing) {
+            if(heldObject != null){
                 ThrowHeldObject();
             } 
             playerIsGrabbing = false;
@@ -99,7 +97,6 @@ public class Player : MonoBehaviour
         heldObject.SetParent(null);
         heldObjectRB.isKinematic = false;
         heldObjectRB.AddForce(transform.forward * shootingSpeed, ForceMode.Impulse);
-        heldObject.GetComponent<InteractableObject>().hasBeenThrown = true;
         heldObject = null;
         heldObjectRB = null;
     }
