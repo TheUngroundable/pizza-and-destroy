@@ -505,6 +505,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4994225087175736129, guid: 5755f2e043ba2482e93228a658bb5af3, type: 3}
+      propertyPath: value
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994225087175736129, guid: 5755f2e043ba2482e93228a658bb5af3, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 480462638}
@@ -1069,6 +1073,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4994225087175736129, guid: 5755f2e043ba2482e93228a658bb5af3, type: 3}
+      propertyPath: value
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994225087175736129, guid: 5755f2e043ba2482e93228a658bb5af3, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 480462638}
@@ -1397,6 +1405,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4994225087175736129, guid: 5755f2e043ba2482e93228a658bb5af3, type: 3}
+      propertyPath: value
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 4994225087175736129, guid: 5755f2e043ba2482e93228a658bb5af3, type: 3}
       propertyPath: player
       value: 
@@ -1904,30 +1916,6 @@ PrefabInstance:
       propertyPath: walletText
       value: 
       objectReference: {fileID: 1425146237}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: foundMoney.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: foundMoney.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1bbf2bbeac33d45b6bb59974da41a1fc, type: 3}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: foundMoney.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 70a86fff95889413780c3a9a51a46b30, type: 3}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: foundMoney.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1d1a007b28e034428b71253d3a1e8cda, type: 3}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: foundMoney.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 2990225c74fff48d6b66717960a4c3fc, type: 3}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: foundMoney.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: fcdff9bbe95a2432dbf53a65433b7054, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e39c029ff866044359be61e56ead55bf, type: 3}
 --- !u!1001 &4994225088220061333
