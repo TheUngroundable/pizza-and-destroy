@@ -33,8 +33,8 @@ public class Player : MonoBehaviour
     public AudioClip[] steps;
 
     public float tauntsProbability = 1f;
+    public bool talkedToPizzaBoy = false;
 
-    // Using the Awake function to set the references
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -78,16 +78,6 @@ public class Player : MonoBehaviour
 
     void GrabbingLogics()
     {
-        /* if(Input.GetKey("space") && heldObject == null){
-            playerIsGrabbing = true;
-        }
-        if(Input.GetKeyUp("space") && heldObject != null){
-            ThrowHeldObject();
-            PlayThrowSound();
-    
-            playerIsGrabbing = false;
-        } */
-
         if (Input.GetKeyDown("space"))
         {
             if (heldObject == null)
@@ -128,9 +118,10 @@ public class Player : MonoBehaviour
             }
             if (hit.transform.tag == "fattorino")
             {
-                if (Input.GetKeyDown("space"))
+                if (Input.GetKeyDown("space") && !talkedToPizzaBoy)
                 {
                     hit.transform.GetComponent<Pizzaboy>().isPizzaboyWaiting = false;
+                    talkedToPizzaBoy = true;
                     GameObject.FindObjectOfType<RoomManager>().StartGame();
                 }
             }

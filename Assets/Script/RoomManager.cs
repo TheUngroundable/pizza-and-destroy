@@ -70,8 +70,6 @@ public class RoomManager : MonoBehaviour
         curRoom = Instantiate(roomPrefab, transform);
         curRoom.transform.localPosition = rooms[0].doorC.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
-
-
     }
 
     public void Update()
