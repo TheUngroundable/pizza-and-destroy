@@ -48,15 +48,18 @@ MonoBehaviour:
   roomPrefab: {fileID: 5460954028465918534, guid: 2968924987b01244780bb95ce364872b, type: 3}
   rooms: []
   countDown: 5
-  timeRemaining: 10
+  timeRemaining: 100
   timerUI: {fileID: 0}
   winMoney: 500
   loseMoney: -1000
   player: {fileID: 0}
-  softMusicIntro: {fileID: 0}
-  softMusicLoop: {fileID: 0}
-  metalMusicIntro: {fileID: 0}
-  metalMusicLoop: {fileID: 0}
+  softMusicIntro: {fileID: 8300000, guid: 324b5593cadd6420fa7aeaf278d97382, type: 3}
+  softMusicLoop: {fileID: 8300000, guid: 1847b44012d0d4b8cb946de513ef5aac, type: 3}
+  metalMusicIntro: {fileID: 8300000, guid: 9a1201881a9cb451a98dfd3f958aa000, type: 3}
+  metalMusicLoop: {fileID: 8300000, guid: 9a1201881a9cb451a98dfd3f958aa000, type: 3}
+  gameOverMusicIntro: {fileID: 8300000, guid: 7aad0ba43341c4fd693d7c7bb6f714eb, type: 3}
+  gameOverMusicLoop: {fileID: 8300000, guid: a715588705a234548b49d5eb9d998c5c, type: 3}
+  winMusic: {fileID: 8300000, guid: 7d58bb2ed435645a2b1e0cdccf1a14c9, type: 3}
   walletText: {fileID: 0}
   winText: {fileID: 0}
   loseText: {fileID: 0}

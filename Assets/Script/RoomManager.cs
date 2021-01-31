@@ -22,6 +22,11 @@ public class RoomManager : MonoBehaviour
     public AudioClip softMusicLoop;
     public AudioClip metalMusicIntro;
     public AudioClip metalMusicLoop;
+
+    public AudioClip gameOverMusicIntro;
+    public AudioClip gameOverMusicLoop;
+
+    public AudioClip winMusic;
     public Text walletText;
 
     public Text winText;
@@ -61,6 +66,25 @@ public class RoomManager : MonoBehaviour
         audioSource.clip = metalMusicLoop;
         audioSource.Play();
     }
+    IEnumerator PlayGameOverMusic()
+    {
+        audioSource.clip = gameOverMusicIntro;
+        audioSource.Stop();
+        audioSource.Play();
+        yield return new WaitForSeconds(gameOverMusicIntro.length);
+        audioSource.Stop();
+        audioSource.clip = gameOverMusicLoop;
+        audioSource.Play();
+    }
+    IEnumerator PlayWinMusic(){
+        audioSource.clip = winMusic;
+        audioSource.Stop();
+        audioSource.Play();
+        yield return new WaitForSeconds(winMusic.length);
+        audioSource.Stop();
+        audioSource.clip = gameOverMusicLoop;
+        audioSource.Play();
+    }
     void ManageWalletUI()
     {
         walletText.text = "Wallet: " + player.wallet + " / " + winMoney;
@@ -95,9 +119,15 @@ public class RoomManager : MonoBehaviour
         ManageWalletUI();
         if (gameStarted && !gameOver)
         {
+            if(player.wallet >= winMoney){
+                EndGame();
+                StartCoroutine(PlayWinMusic());
+            }
+            
             if(player.wallet < loseMoney){
                 destructionText.enabled = true;
                 gameOver = true;
+                StartCoroutine(PlayGameOverMusic());
             } else if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
@@ -106,6 +136,7 @@ public class RoomManager : MonoBehaviour
             else
             {
                 EndGame();
+                StartCoroutine(PlayGameOverMusic());
             }
         }
     }
