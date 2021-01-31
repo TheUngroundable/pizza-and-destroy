@@ -20,7 +20,7 @@ public class InteractableObject : MonoBehaviour
     public void Start(){
         player = GameObject.FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
-        value = (int) Random.Range(lowValue, topValue);
+        value = GetRandomValue();
     }
 
     void Awake(){
@@ -29,6 +29,10 @@ public class InteractableObject : MonoBehaviour
         }
     }
     
+    int GetRandomValue(){
+        return (int) Random.Range(lowValue, topValue);
+    }
+
     void OnCollisionEnter(Collision collision){
         GameObject collisionGameObject = collision.gameObject;
         PlayCollisionSounds();
@@ -61,6 +65,9 @@ public class InteractableObject : MonoBehaviour
     {
         GameObject curText = Instantiate(textMoney.gameObject);
         curText.transform.position = transform.position + new Vector3(0,2,0);
+        if(value == 0){
+            value = GetRandomValue();
+        }
         curText.GetComponent<MoneyText>().money = -value;
     }
 
