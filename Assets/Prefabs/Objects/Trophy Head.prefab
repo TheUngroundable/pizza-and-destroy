@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b750f4aacc6974fa1a77b435e740dbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 10
+  value: 5
   valueThreshold: 100
   collidedWith: 0
   player: {fileID: 0}

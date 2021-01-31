@@ -15,9 +15,12 @@ public class RoomManager : MonoBehaviour
     public int loseMoney = -1000;
     public Player player;
     private bool gameStarted = false;
+    private bool gameOver = false;
     private AudioSource audioSource;
-    public AudioClip softMusic;
-    public AudioClip metalMusic;
+    public AudioClip softMusicIntro;
+    public AudioClip softMusicLoop;
+    public AudioClip metalMusicIntro;
+    public AudioClip metalMusicLoop;
     public Text walletText;
 
     public Text winText;
@@ -29,18 +32,28 @@ public class RoomManager : MonoBehaviour
         Application.targetFrameRate = 60;
         InstanceFirstRoom();
         audioSource = GetComponent<AudioSource>();
-        PlaySoftMusic();
+        audioSource.loop = true;
+        StartCoroutine(PlaySoftMusic());
     }
 
-    void PlaySoftMusic()
+    IEnumerator PlaySoftMusic()
     {
-        audioSource.PlayOneShot(softMusic);
-    }
-    void PlayMetalMusic()
-    {
-        audioSource.loop = true;
-        audioSource.clip = metalMusic;
+        audioSource.clip = softMusicIntro;
         audioSource.Stop();
+        audioSource.Play();
+        yield return new WaitForSeconds(softMusicIntro.length);
+        audioSource.Stop();
+        audioSource.clip = softMusicLoop;
+        audioSource.Play();
+    }
+    IEnumerator PlayMetalMusic()
+    {
+        audioSource.clip = metalMusicIntro;
+        audioSource.Stop();
+        audioSource.Play();
+        yield return new WaitForSeconds(metalMusicIntro.length);
+        audioSource.Stop();
+        audioSource.clip = metalMusicLoop;
         audioSource.Play();
     }
     void ManageWalletUI()
@@ -75,12 +88,13 @@ public class RoomManager : MonoBehaviour
     public void Update()
     {
         ManageWalletUI();
-        if (gameStarted)
+        if (gameStarted && !gameOver)
         {
             Debug.Log(player.wallet);
             Debug.Log(loseMoney);
             if(player.wallet < loseMoney){
                 destructionText.enabled = true;
+                gameOver = true;
             } else if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
@@ -96,12 +110,13 @@ public class RoomManager : MonoBehaviour
     public void StartGame()
     {
         rooms[0].transform.GetChild(10).gameObject.SetActive(false);
-        PlayMetalMusic();
+        StartCoroutine(PlayMetalMusic());
         StartCoroutine(StartGameAfterSeconds());
     }
 
     public void EndGame()
     {
+        gameOver = true;
         if (player.wallet >= winMoney)
         {
             winText.enabled = true;
@@ -115,7 +130,6 @@ public class RoomManager : MonoBehaviour
     {
         rooms[0].transform.GetChild(11).gameObject.SetActive(true);
         yield return new WaitForSeconds(countDown);
-        //inizia la partita , le porte si abilitano ,iniza musica e gli oggetti in scena di abilitano
         rooms[0].transform.GetChild(11).gameObject.SetActive(false);
         rooms[0].transform.GetChild(8).gameObject.SetActive(false);
         gameStarted = true;

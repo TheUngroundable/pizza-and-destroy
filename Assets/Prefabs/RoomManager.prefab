@@ -51,10 +51,12 @@ MonoBehaviour:
   timeRemaining: 10
   timerUI: {fileID: 0}
   winMoney: 500
-  loseMoney: -100
+  loseMoney: -1000
   player: {fileID: 0}
-  softMusic: {fileID: 8300000, guid: 4b886e1fecbc34aa4a0e4daf8730bf86, type: 3}
-  metalMusic: {fileID: 8300000, guid: 9a1201881a9cb451a98dfd3f958aa000, type: 3}
+  softMusicIntro: {fileID: 0}
+  softMusicLoop: {fileID: 0}
+  metalMusicIntro: {fileID: 0}
+  metalMusicLoop: {fileID: 0}
   walletText: {fileID: 0}
   winText: {fileID: 0}
   loseText: {fileID: 0}
