@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b750f4aacc6974fa1a77b435e740dbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topValue: 20
+  lowValue: 5
   value: 5
   valueThreshold: 100
   collidedWith: 0
@@ -317,6 +319,14 @@ PrefabInstance:
     - target: {fileID: 3070288589003480459, guid: c1a594f063d220740ae6604dea417835, type: 3}
       propertyPath: m_Name
       value: Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739470484538591256, guid: c1a594f063d220740ae6604dea417835, type: 3}
+      propertyPath: lowValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3739470484538591256, guid: c1a594f063d220740ae6604dea417835, type: 3}
+      propertyPath: topValue
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5556381035079742062, guid: c1a594f063d220740ae6604dea417835, type: 3}
       propertyPath: m_RootOrder

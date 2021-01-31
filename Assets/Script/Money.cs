@@ -5,5 +5,11 @@ using UnityEngine;
 public class Money : MonoBehaviour
 {
     public int value;
+    public float topValue;
+    public float lowValue;
+
+    void Start(){
+        value = (int) Random.Range(lowValue, topValue);
+    }
 
 }

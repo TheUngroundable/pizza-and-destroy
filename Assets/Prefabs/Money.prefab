@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 100
+  topValue: 50
+  lowValue: 10
 --- !u!54 &7245325242094999739
 Rigidbody:
   m_ObjectHideFlags: 0
