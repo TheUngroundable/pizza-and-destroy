@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public float tauntsProbability = 1f;
     public bool talkedToPizzaBoy = false;
 
+    public MoneyText textMoney;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -203,6 +204,15 @@ public class Player : MonoBehaviour
             Destroy(collisionGameObject);
             PlayEarningMoney();
             PlayFoundMoney();
+            SpawnMoneyText(money.value);
         }
+    }
+
+
+     public void SpawnMoneyText(int monez)
+    {
+        GameObject curText = Instantiate(textMoney.gameObject);
+        curText.transform.position = transform.position + new Vector3(0,2,0);
+        curText.GetComponent<MoneyText>().money = monez;
     }
 }

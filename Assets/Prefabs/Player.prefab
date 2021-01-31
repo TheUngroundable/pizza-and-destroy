@@ -181,6 +181,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 108fd77687f7e415aa640f016d58a98a, type: 3}
   - {fileID: 8300000, guid: b996fc13e249b4123ab57f30e0c28aec, type: 3}
   tauntsProbability: 1
+  talkedToPizzaBoy: 0
+  textMoney: {fileID: 311501073619018612, guid: d5f9b60f727a7a0429e0f4cf4b8f6dbd, type: 3}
 --- !u!82 &480462641
 AudioSource:
   m_ObjectHideFlags: 0
