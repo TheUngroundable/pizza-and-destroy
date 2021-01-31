@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MoneyText : MonoBehaviour
 {
-    
     public int money;
     private TextMesh text;
 
@@ -26,9 +25,5 @@ public class MoneyText : MonoBehaviour
       
          Destroy(gameObject,3f);
     }
-
-   
-
-
 
 }
