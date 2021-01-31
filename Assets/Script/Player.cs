@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     private Rigidbody heldObjectRB;
 
     public int wallet = 0;
-    public Text walletText;
 
     private AudioSource audioSource;
     public AudioClip[] randomTaunts;
@@ -123,7 +122,7 @@ public class Player : MonoBehaviour
             { 
                 if(Input.GetKeyDown("space"))
                 {
-                   Debug.Log("fattorinoooo0o");
+                   hit.transform.GetComponent<Pizzaboy>().isPizzaboyWaiting = false;
                    GameObject.FindObjectOfType<RoomManager>().StartGame();
                 }
             }  
@@ -140,43 +139,27 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
-
-    void ManageWalletUI(){
-        walletText.text = "Wallet "+wallet;
-    }
     void PlayTaunts(){
         float playProbability = Random.Range(0f, 100.0f);
         if(!audioSource.isPlaying && playProbability < (tauntsProbability / 5)){
-            int randomIndex = (int) (Random.Range(0f, 10.0f) % randomTaunts.Length);
-            AudioClip randomTaunt = randomTaunts[randomIndex];
-            PlaySound(randomTaunt);
+            PlaySound(AudioHelper.GetRandomAudioClip(randomTaunts));
         }
     }
 
     void PlayPickUpSound(){
-        int randomIndex = (int) (Random.Range(0f, 10.0f) % randomPickUp.Length);
-        AudioClip randomPickUpSound = randomPickUp[randomIndex];
-        PlaySound(randomPickUpSound);
+        PlaySound(AudioHelper.GetRandomAudioClip(randomPickUp));
     }
 
     void PlayThrowSound(){
-        int randomIndex = (int) (Random.Range(0f, 10.0f) % randomThrow.Length);
-        AudioClip randomThrowSound = randomThrow[randomIndex];
-        PlaySound(randomThrowSound);
+        PlaySound(AudioHelper.GetRandomAudioClip(randomThrow));
     }
 
     void PlayFoundMoney(){
-        int randomIndex = (int) (Random.Range(0f, 10.0f) % foundMoney.Length);
-        AudioClip foundMoneySound = foundMoney[randomIndex];
-        PlaySound(foundMoneySound);
+        PlaySound(AudioHelper.GetRandomAudioClip(foundMoney));
     }
 
     public void PlayWorried(){
-        int randomIndex = (int) (Random.Range(0f, 10.0f) % worried.Length);
-        AudioClip worriedSound = worried[randomIndex];
-        PlaySound(worriedSound);
+        PlaySound(AudioHelper.GetRandomAudioClip(worried));
     }
     public void PlayEarningMoney(){
         PlaySound(earningMoney);
@@ -187,9 +170,7 @@ public class Player : MonoBehaviour
     }
 
     public void PlayStepsSound(){
-        int randomIndex = (int) (Random.Range(0f, 10.0f) % steps.Length);
-        AudioClip randomStepsSound = steps[randomIndex];
-        PlaySound(randomStepsSound);
+        PlaySound(AudioHelper.GetRandomAudioClip(steps));
     }
 
     public void PlaySound(AudioClip audioClip){
