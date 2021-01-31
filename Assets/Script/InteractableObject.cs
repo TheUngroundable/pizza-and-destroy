@@ -12,7 +12,8 @@ public class InteractableObject : MonoBehaviour
     public Player player;
     AudioSource audioSource;
     public AudioClip[] collisionSounds;
-
+    public MoneyText textMoney;
+    
     public void Start(){
         player = GameObject.FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
@@ -32,6 +33,7 @@ public class InteractableObject : MonoBehaviour
                 player.wallet -= value;
                 player.PlayLosingMoney();
                 collidedWith = true;
+                SpawnMoneyText();
                 if(isObjectHighlyValuable){
                     player.PlayWorried();
                 }
@@ -42,12 +44,22 @@ public class InteractableObject : MonoBehaviour
                 interactableObject.collidedWith = true;
                 player.wallet -= interactableObject.value;
                 player.PlayLosingMoney();
+                SpawnMoneyText();
                 if(interactableObject.isObjectHighlyValuable){
                     player.PlayWorried();
                 }
             }
         }
     }
+
+     
+    public void SpawnMoneyText()
+    {
+        GameObject curText = Instantiate(textMoney.gameObject);
+        curText.transform.position = transform.position + new Vector3(0,2,0);
+        curText.GetComponent<MoneyText>().money = -value;
+    }
+
     void PlayCollisionSounds(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % collisionSounds.Length);
         AudioClip randomCollisionSounds = collisionSounds[randomIndex];

@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 053ee64b4d01041a6a922e8506decef9, type: 3}
   - {fileID: 8300000, guid: 9ee3ef853f20f4959a1ecd166a0f1e3f, type: 3}
   - {fileID: 8300000, guid: 4d3bb035d38834cf0b68c54771c35ead, type: 3}
+  textMoney: {fileID: 311501073619018612, guid: d5f9b60f727a7a0429e0f4cf4b8f6dbd, type: 3}
 --- !u!54 &5182456509378547190
 Rigidbody:
   m_ObjectHideFlags: 0
