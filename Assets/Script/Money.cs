@@ -9,7 +9,7 @@ public class Money : MonoBehaviour
     public float lowValue;
 
     void Start(){
-        //value = (int) Random.Range(lowValue, topValue);
+        value = (int) Random.Range(lowValue, topValue);
     }
 
 }
