@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
 
+    public float topValue;
+    public float lowValue;
     public int value;
     public int valueThreshold = 100;
     public bool collidedWith;
@@ -13,10 +15,12 @@ public class InteractableObject : MonoBehaviour
     AudioSource audioSource;
     public AudioClip[] collisionSounds;
     public MoneyText textMoney;
+
     
     public void Start(){
         player = GameObject.FindObjectOfType<Player>();
         audioSource = GetComponent<AudioSource>();
+        value = (int) Random.Range(lowValue, topValue);
     }
 
     void Awake(){
@@ -40,7 +44,7 @@ public class InteractableObject : MonoBehaviour
             }
         } else if(collisionGameObject.tag == "InteractableObject"){
             InteractableObject interactableObject = collisionGameObject.GetComponent<InteractableObject>();
-            if(!interactableObject.collidedWith && player && !player.playerIsGrabbing){
+            if(interactableObject && !interactableObject.collidedWith && player && !player.playerIsGrabbing){
                 interactableObject.collidedWith = true;
                 player.wallet -= interactableObject.value;
                 player.PlayLosingMoney();
