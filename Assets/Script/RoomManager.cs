@@ -12,11 +12,15 @@ public class RoomManager : MonoBehaviour
     public float timeRemaining = 10;
     public Text timerUI;
     public int winMoney = 500;
-    public Player pl;
+    public Player player;
     private bool gameStarted = false;
     private AudioSource audioSource;
     public AudioClip softMusic;
     public AudioClip metalMusic;
+    public Text walletText;
+
+    public Text winText;
+    public Text loseText;
 
     void Start()
     {
@@ -36,6 +40,10 @@ public class RoomManager : MonoBehaviour
         audioSource.clip = metalMusic;
         audioSource.Stop();
         audioSource.Play();
+    }
+    void ManageWalletUI()
+    {
+        walletText.text = "Wallet: " + player.wallet + " / " + winMoney;
     }
     public void InstanceFirstRoom()
     {
@@ -66,6 +74,7 @@ public class RoomManager : MonoBehaviour
 
     public void Update()
     {
+        ManageWalletUI();
         if (gameStarted)
         {
             if (timeRemaining > 0)
@@ -90,15 +99,13 @@ public class RoomManager : MonoBehaviour
 
     public void EndGame()
     {
-        if (pl.wallet >= winMoney)
+        if (player.wallet >= winMoney)
         {
-            //vinci
-            Debug.Log("VINTOOO");
+            winText.enabled = false;
         }
         else
         {
-            //hai perso
-            Debug.Log("PERSOOO");
+            loseText.enabled = true;
         }
     }
     IEnumerator StartGameAfterSeconds()
@@ -109,7 +116,6 @@ public class RoomManager : MonoBehaviour
         rooms[0].transform.GetChild(11).gameObject.SetActive(false);
         rooms[0].transform.GetChild(8).gameObject.SetActive(false);
         gameStarted = true;
-
     }
 
 

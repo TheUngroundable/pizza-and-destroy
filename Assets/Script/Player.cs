@@ -49,18 +49,18 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        ManageWalletUI();
         ManageRaycast();
         PlayTaunts();
     }
-   
-    void Move ()
+
+    void Move()
     {
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
 
         Vector3 direction = new Vector3(hAxis, 0f, vAxis).normalized;
-        if(direction.magnitude >= 0.1f){
+        if (direction.magnitude >= 0.1f)
+        {
             movement = new Vector3(hAxis, 0f, vAxis);
         }
         rb.position += transform.forward * moveSpeed * Time.deltaTime;
@@ -68,14 +68,16 @@ public class Player : MonoBehaviour
         rb.rotation = Quaternion.Euler(0f, targetAngle, 0f);
     }
 
-    void PickUpObject(RaycastHit other){
+    void PickUpObject(RaycastHit other)
+    {
         heldObject = other.transform;
         heldObjectRB = heldObject.GetComponent<Rigidbody>();
         heldObjectRB.isKinematic = true;
         other.transform.SetParent(transform);
     }
 
-    void GrabbingLogics(){
+    void GrabbingLogics()
+    {
         /* if(Input.GetKey("space") && heldObject == null){
             playerIsGrabbing = true;
         }
@@ -86,18 +88,23 @@ public class Player : MonoBehaviour
             playerIsGrabbing = false;
         } */
 
-        if(Input.GetKeyDown("space")){
-            if(heldObject == null){
+        if (Input.GetKeyDown("space"))
+        {
+            if (heldObject == null)
+            {
                 playerIsGrabbing = true;
-            } else {
+            }
+            else
+            {
                 playerIsGrabbing = false;
                 ThrowHeldObject();
                 PlayThrowSound();
             }
         }
     }
-    
-    void ThrowHeldObject(){
+
+    void ThrowHeldObject()
+    {
         heldObject.SetParent(null);
         heldObjectRB.isKinematic = false;
         heldObjectRB.AddForce(transform.forward * shootingSpeed, ForceMode.Impulse);
@@ -105,32 +112,34 @@ public class Player : MonoBehaviour
         heldObjectRB = null;
     }
 
-    void ManageRaycast(){
-        RaycastHit hit;   
+    void ManageRaycast()
+    {
+        RaycastHit hit;
         Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(transform.position, fwd, out hit,1.5f))
+        if (Physics.Raycast(transform.position, fwd, out hit, 1.5f))
         {
-            if(hit.transform.tag=="door")
-            { 
-                if(Input.GetKeyDown("space"))
+            if (hit.transform.tag == "door")
+            {
+                if (Input.GetKeyDown("space"))
                 {
                     //hit.transform.GetComponent<Door>().PlayOpenSound();
                     hit.transform.gameObject.SetActive(false);
                 }
-            }  
-             if(hit.transform.tag=="fattorino")
-            { 
-                if(Input.GetKeyDown("space"))
+            }
+            if (hit.transform.tag == "fattorino")
+            {
+                if (Input.GetKeyDown("space"))
                 {
-                   hit.transform.GetComponent<Pizzaboy>().isPizzaboyWaiting = false;
-                   GameObject.FindObjectOfType<RoomManager>().StartGame();
+                    hit.transform.GetComponent<Pizzaboy>().isPizzaboyWaiting = false;
+                    GameObject.FindObjectOfType<RoomManager>().StartGame();
                 }
-            }  
+            }
 
-            if(hit.transform.tag=="InteractableObject")
+            if (hit.transform.tag == "InteractableObject")
             {
                 InteractableObject interactableObject = hit.transform.GetComponent<InteractableObject>();
-                if(playerIsGrabbing && heldObject == null){
+                if (playerIsGrabbing && heldObject == null)
+                {
                     PickUpObject(hit);
                     PlayPickUpSound();
                     playerIsGrabbing = false;
@@ -139,47 +148,59 @@ public class Player : MonoBehaviour
         }
     }
 
-    void PlayTaunts(){
+    void PlayTaunts()
+    {
         float playProbability = Random.Range(0f, 100.0f);
-        if(!audioSource.isPlaying && playProbability < (tauntsProbability / 5)){
+        if (!audioSource.isPlaying && playProbability < (tauntsProbability / 5))
+        {
             PlaySound(AudioHelper.GetRandomAudioClip(randomTaunts));
         }
     }
 
-    void PlayPickUpSound(){
+    void PlayPickUpSound()
+    {
         PlaySound(AudioHelper.GetRandomAudioClip(randomPickUp));
     }
 
-    void PlayThrowSound(){
+    void PlayThrowSound()
+    {
         PlaySound(AudioHelper.GetRandomAudioClip(randomThrow));
     }
 
-    void PlayFoundMoney(){
+    void PlayFoundMoney()
+    {
         PlaySound(AudioHelper.GetRandomAudioClip(foundMoney));
     }
 
-    public void PlayWorried(){
+    public void PlayWorried()
+    {
         PlaySound(AudioHelper.GetRandomAudioClip(worried));
     }
-    public void PlayEarningMoney(){
+    public void PlayEarningMoney()
+    {
         PlaySound(earningMoney);
     }
 
-    public void PlayLosingMoney(){
+    public void PlayLosingMoney()
+    {
         PlaySound(losingMoney);
     }
 
-    public void PlayStepsSound(){
+    public void PlayStepsSound()
+    {
         PlaySound(AudioHelper.GetRandomAudioClip(steps));
     }
 
-    public void PlaySound(AudioClip audioClip){
+    public void PlaySound(AudioClip audioClip)
+    {
         audioSource.PlayOneShot(audioClip, 0.7F);
     }
-    
-    void OnCollisionEnter(Collision collision){
+
+    void OnCollisionEnter(Collision collision)
+    {
         GameObject collisionGameObject = collision.gameObject;
-        if(collisionGameObject.tag == "Money") {
+        if (collisionGameObject.tag == "Money")
+        {
             Money money = collisionGameObject.GetComponent<Money>();
             wallet += money.value;
             Destroy(collisionGameObject);

@@ -47,12 +47,14 @@ MonoBehaviour:
   demoRoom: {fileID: 5460954028465918534, guid: 247ac375c6437f24780af3a6522a9520, type: 3}
   roomPrefab: {fileID: 5460954028465918534, guid: 2968924987b01244780bb95ce364872b, type: 3}
   rooms: []
+  countDown: 5
   timeRemaining: 10
   timerUI: {fileID: 0}
   winMoney: 500
-  pl: {fileID: 0}
-  softMusic: {fileID: 0}
-  metalMusic: {fileID: 0}
+  player: {fileID: 0}
+  softMusic: {fileID: 8300000, guid: 4b886e1fecbc34aa4a0e4daf8730bf86, type: 3}
+  metalMusic: {fileID: 8300000, guid: 9a1201881a9cb451a98dfd3f958aa000, type: 3}
+  walletText: {fileID: 0}
 --- !u!82 &-6737721006470503051
 AudioSource:
   m_ObjectHideFlags: 0
@@ -65,7 +67,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
