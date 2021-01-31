@@ -12,6 +12,7 @@ public class RoomManager : MonoBehaviour
     public float timeRemaining = 10;
     public Text timerUI;
     public int winMoney = 500;
+    public int loseMoney = -100;
     public Player player;
     private bool gameStarted = false;
     private AudioSource audioSource;
@@ -21,6 +22,7 @@ public class RoomManager : MonoBehaviour
 
     public Text winText;
     public Text loseText;
+    public Text destructionText;
 
     void Start()
     {
@@ -77,14 +79,15 @@ public class RoomManager : MonoBehaviour
         ManageWalletUI();
         if (gameStarted)
         {
-            if (timeRemaining > 0)
+            if(player.wallet < loseMoney){
+                destructionText.enabled = true;
+            } else if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
                 timerUI.text = timeRemaining.ToString("f0");
             }
             else
             {
-                Debug.Log("fine parza");
                 EndGame();
             }
         }
@@ -101,7 +104,7 @@ public class RoomManager : MonoBehaviour
     {
         if (player.wallet >= winMoney)
         {
-            winText.enabled = false;
+            winText.enabled = true;
         }
         else
         {

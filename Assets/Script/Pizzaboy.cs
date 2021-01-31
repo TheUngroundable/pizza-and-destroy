@@ -32,7 +32,6 @@ public class Pizzaboy : MonoBehaviour
 
     void PlaySound(AudioClip audioClip)
     {
-        Debug.Log(audioClip);
         audioSource.PlayOneShot(audioClip, 0.7F);
     }
 }
