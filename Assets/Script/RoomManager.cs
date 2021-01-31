@@ -8,17 +8,43 @@ public class RoomManager : MonoBehaviour
     public GameObject demoRoom;
     public GameObject roomPrefab;
     public List<Room> rooms = new List<Room>();
+    public float countDown = 5f;
     public float timeRemaining = 10;
     public Text timerUI;
-    public int winMoney=500;
-    public Player pl;
-    private bool gameStarted=false;
+    public int winMoney = 500;
+    public Player player;
+    private bool gameStarted = false;
+    private AudioSource audioSource;
+    public AudioClip softMusic;
+    public AudioClip metalMusic;
+    public Text walletText;
+
+    public Text winText;
+    public Text loseText;
+
     void Start()
     {
-         Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
         InstanceFirstRoom();
+        audioSource = GetComponent<AudioSource>();
+        PlaySoftMusic();
     }
 
+    void PlaySoftMusic()
+    {
+        audioSource.PlayOneShot(softMusic);
+    }
+    void PlayMetalMusic()
+    {
+        audioSource.loop = true;
+        audioSource.clip = metalMusic;
+        audioSource.Stop();
+        audioSource.Play();
+    }
+    void ManageWalletUI()
+    {
+        walletText.text = "Wallet: " + player.wallet + " / " + winMoney;
+    }
     public void InstanceFirstRoom()
     {
         GameObject curRoom = Instantiate(demoRoom, transform);
@@ -43,19 +69,20 @@ public class RoomManager : MonoBehaviour
         curRoom.transform.localPosition = rooms[0].doorC.localPosition;
         rooms.Add(curRoom.GetComponent<Room>());
 
-       
+
     }
 
     public void Update()
     {
-        if(gameStarted)
+        ManageWalletUI();
+        if (gameStarted)
         {
-            if (timeRemaining > 0  )
+            if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
                 timerUI.text = timeRemaining.ToString("f0");
             }
-            else 
+            else
             {
                 Debug.Log("fine parza");
                 EndGame();
@@ -65,28 +92,26 @@ public class RoomManager : MonoBehaviour
 
     public void StartGame()
     {
-         rooms[0].transform.GetChild(10).gameObject.SetActive(false);
+        rooms[0].transform.GetChild(10).gameObject.SetActive(false);
+        PlayMetalMusic();
         StartCoroutine(StartGameAfterSeconds());
     }
 
     public void EndGame()
     {
-        if(pl.wallet >= winMoney)
+        if (player.wallet >= winMoney)
         {
-            //vinci
-            Debug.Log("VINTOOO");
+            winText.enabled = false;
         }
         else
         {
-            //hai perso
-            Debug.Log("PERSOOO");
+            loseText.enabled = true;
         }
     }
-
     IEnumerator StartGameAfterSeconds()
     {
         rooms[0].transform.GetChild(11).gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(countDown);
         //inizia la partita , le porte si abilitano ,iniza musica e gli oggetti in scena di abilitano
         rooms[0].transform.GetChild(11).gameObject.SetActive(false);
         rooms[0].transform.GetChild(8).gameObject.SetActive(false);

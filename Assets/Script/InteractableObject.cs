@@ -23,12 +23,6 @@ public class InteractableObject : MonoBehaviour
             isObjectHighlyValuable = true;
         }
     }
-
-    void Update()
-    {
-        
-    }
-    
     
     void OnCollisionEnter(Collision collision){
         GameObject collisionGameObject = collision.gameObject;
@@ -57,6 +51,6 @@ public class InteractableObject : MonoBehaviour
     void PlayCollisionSounds(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % collisionSounds.Length);
         AudioClip randomCollisionSounds = collisionSounds[randomIndex];
-        audioSource.PlayOneShot(randomCollisionSounds, 0.3f);
+        audioSource.PlayOneShot(randomCollisionSounds, 0.1f);
     }
 }
