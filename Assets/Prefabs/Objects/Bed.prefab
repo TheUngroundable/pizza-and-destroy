@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b750f4aacc6974fa1a77b435e740dbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 10
+  value: 5
   valueThreshold: 100
   collidedWith: 0
   player: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 053ee64b4d01041a6a922e8506decef9, type: 3}
   - {fileID: 8300000, guid: 9ee3ef853f20f4959a1ecd166a0f1e3f, type: 3}
   - {fileID: 8300000, guid: 4d3bb035d38834cf0b68c54771c35ead, type: 3}
+  textMoney: {fileID: 311501073619018612, guid: d5f9b60f727a7a0429e0f4cf4b8f6dbd, type: 3}
 --- !u!54 &4769763912472777125
 Rigidbody:
   m_ObjectHideFlags: 0

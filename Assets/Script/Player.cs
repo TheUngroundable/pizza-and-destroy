@@ -31,10 +31,14 @@ public class Player : MonoBehaviour
     public AudioClip earningMoney;
     public AudioClip losingMoney;
     public AudioClip[] steps;
+    public AudioClip[] startGame;
+
+    public AudioClip shock;
 
     public float tauntsProbability = 1f;
     public bool talkedToPizzaBoy = false;
 
+    public MoneyText textMoney;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -122,6 +126,7 @@ public class Player : MonoBehaviour
                 {
                     hit.transform.GetComponent<Pizzaboy>().isPizzaboyWaiting = false;
                     talkedToPizzaBoy = true;
+                    PlayStartGame();
                     GameObject.FindObjectOfType<RoomManager>().StartGame();
                 }
             }
@@ -137,6 +142,11 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    void PlayStartGame(){
+        PlaySound(shock);
+        PlaySound(AudioHelper.GetRandomAudioClip(startGame));
     }
 
     void PlayTaunts()
@@ -197,6 +207,15 @@ public class Player : MonoBehaviour
             Destroy(collisionGameObject);
             PlayEarningMoney();
             PlayFoundMoney();
+            SpawnMoneyText(money.value);
         }
+    }
+
+
+     public void SpawnMoneyText(int monez)
+    {
+        GameObject curText = Instantiate(textMoney.gameObject);
+        curText.transform.position = transform.position + new Vector3(0,2,0);
+        curText.GetComponent<MoneyText>().money = monez;
     }
 }
