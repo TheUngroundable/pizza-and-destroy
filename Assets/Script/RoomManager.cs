@@ -16,6 +16,7 @@ public class RoomManager : MonoBehaviour
     public Player player;
     private bool gameStarted = false;
     private bool gameOver = false;
+    private bool playedMetalMusic = false;
     private AudioSource audioSource;
     public AudioClip softMusicIntro;
     public AudioClip softMusicLoop;
@@ -42,12 +43,16 @@ public class RoomManager : MonoBehaviour
         audioSource.Stop();
         audioSource.Play();
         yield return new WaitForSeconds(softMusicIntro.length);
-        audioSource.Stop();
-        audioSource.clip = softMusicLoop;
-        audioSource.Play();
+        if(!playedMetalMusic){
+            audioSource.Stop();
+            audioSource.clip = softMusicLoop;
+            audioSource.Play();
+        }
     }
     IEnumerator PlayMetalMusic()
     {
+        playedMetalMusic = true;
+        StopCoroutine(PlaySoftMusic());
         audioSource.clip = metalMusicIntro;
         audioSource.Stop();
         audioSource.Play();
@@ -90,8 +95,6 @@ public class RoomManager : MonoBehaviour
         ManageWalletUI();
         if (gameStarted && !gameOver)
         {
-            Debug.Log(player.wallet);
-            Debug.Log(loseMoney);
             if(player.wallet < loseMoney){
                 destructionText.enabled = true;
                 gameOver = true;

@@ -1206,9 +1206,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 442185361}
     - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
+      propertyPath: softMusicLoop
+      value: 
+      objectReference: {fileID: 8300000, guid: 1847b44012d0d4b8cb946de513ef5aac, type: 3}
+    - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
+      propertyPath: metalMusicLoop
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a1201881a9cb451a98dfd3f958aa000, type: 3}
+    - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
+      propertyPath: softMusicIntro
+      value: 
+      objectReference: {fileID: 8300000, guid: 324b5593cadd6420fa7aeaf278d97382, type: 3}
+    - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
       propertyPath: destructionText
       value: 
       objectReference: {fileID: 866687269}
+    - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
+      propertyPath: metalMusicIntro
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a1201881a9cb451a98dfd3f958aa000, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
 --- !u!1001 &5118443304098908528
