@@ -1203,7 +1203,7 @@ PrefabInstance:
       objectReference: {fileID: 442185361}
     - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
       propertyPath: timeRemaining
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
       propertyPath: destructionText
