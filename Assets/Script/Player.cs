@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public AudioClip earningMoney;
     public AudioClip losingMoney;
     public AudioClip[] steps;
+    public AudioClip[] startGame;
 
     public float tauntsProbability = 1f;
     public bool talkedToPizzaBoy = false;
@@ -122,6 +123,7 @@ public class Player : MonoBehaviour
                 {
                     hit.transform.GetComponent<Pizzaboy>().isPizzaboyWaiting = false;
                     talkedToPizzaBoy = true;
+                    PlayStartGame();
                     GameObject.FindObjectOfType<RoomManager>().StartGame();
                 }
             }
@@ -137,6 +139,10 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    void PlayStartGame(){
+        PlaySound(AudioHelper.GetRandomAudioClip(startGame));
     }
 
     void PlayTaunts()

@@ -116,6 +116,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 54f78fc38ab1242ae943fafaf555e2f1, type: 3}
   - {fileID: 8300000, guid: 4fb03493cb16046f599a98e718b40ffe, type: 3}
   - {fileID: 8300000, guid: 65172344925614fd9a117ca5709fa840, type: 3}
+  startedGame:
+  - {fileID: 8300000, guid: ba593cb34604a482491e2a5d5e3f9060, type: 3}
+  - {fileID: 8300000, guid: d56163d65fe0049448f14400abc8346e, type: 3}
+  - {fileID: 8300000, guid: c74664fe721a743f3a615cb695cfed78, type: 3}
+  - {fileID: 8300000, guid: aee7b7a5da1894eb4849a25d654b0bb8, type: 3}
   isPizzaboyWaiting: 0
 --- !u!82 &5195127522582160091
 AudioSource:
