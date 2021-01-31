@@ -180,6 +180,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e163a37fb268d46cdab51bff98e326ec, type: 3}
   - {fileID: 8300000, guid: 108fd77687f7e415aa640f016d58a98a, type: 3}
   - {fileID: 8300000, guid: b996fc13e249b4123ab57f30e0c28aec, type: 3}
+  startGame:
+  - {fileID: 8300000, guid: ec01aa5c8bb16412b9e0c8cd2d97d19d, type: 3}
+  - {fileID: 8300000, guid: 7927920f9c367436fa4440cdbc75b100, type: 3}
+  - {fileID: 8300000, guid: 488bc0c437c764c429af90f3a4aae7bd, type: 3}
+  - {fileID: 8300000, guid: ef9006588dbfa44a287155258bedcc29, type: 3}
+  shock: {fileID: 8300000, guid: a88922f27781440ba88af221b1e9b784, type: 3}
   tauntsProbability: 1
   talkedToPizzaBoy: 0
   textMoney: {fileID: 311501073619018612, guid: d5f9b60f727a7a0429e0f4cf4b8f6dbd, type: 3}

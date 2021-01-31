@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     public AudioClip[] steps;
     public AudioClip[] startGame;
 
+    public AudioClip shock;
+
     public float tauntsProbability = 1f;
     public bool talkedToPizzaBoy = false;
 
@@ -143,6 +145,7 @@ public class Player : MonoBehaviour
     }
 
     void PlayStartGame(){
+        PlaySound(shock);
         PlaySound(AudioHelper.GetRandomAudioClip(startGame));
     }
 
