@@ -133,7 +133,6 @@ MonoBehaviour:
   shootingSpeed: 0.5
   heldObject: {fileID: 0}
   wallet: 0
-  walletText: {fileID: 0}
   randomTaunts:
   - {fileID: 8300000, guid: a1f6d6c606975419d8c057c110aa4376, type: 3}
   - {fileID: 8300000, guid: 5c429382b92f44b3ca2fa58e784af6da, type: 3}

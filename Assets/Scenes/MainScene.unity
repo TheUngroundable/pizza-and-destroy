@@ -130,30 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
-      propertyPath: m_Height
-      value: 15.900471
-      objectReference: {fileID: 0}
-    - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
-      propertyPath: m_Radius
-      value: 2.6053815
-      objectReference: {fileID: 0}
-    - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
-      propertyPath: m_Center.x
-      value: -0.000000008799171
-      objectReference: {fileID: 0}
-    - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
-      propertyPath: m_Center.y
-      value: 0.0000000036178296
-      objectReference: {fileID: 0}
-    - target: {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
-      propertyPath: m_Center.z
-      value: 0.47572422
-      objectReference: {fileID: 0}
     - target: {fileID: 6205132378055411954, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
       propertyPath: target
       value: 
@@ -206,9 +182,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 368201627, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
-    - {fileID: 368201621, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e88778b2196c4be1bce686cb96eb75d, type: 3}
 --- !u!1 &429269544
 GameObject:
@@ -437,7 +411,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -250, y: -15}
-  m_SizeDelta: {x: 500, y: 30}
+  m_SizeDelta: {x: 500, y: 60}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &866687269
 MonoBehaviour:
@@ -693,10 +667,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4120340300792940383, guid: e39c029ff866044359be61e56ead55bf, type: 3}
-      propertyPath: walletText
-      value: 
-      objectReference: {fileID: 442185361}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e39c029ff866044359be61e56ead55bf, type: 3}
 --- !u!4 &1542702436 stripped
@@ -1163,10 +1133,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6737721006470503051, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 3036990144023944820, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
       propertyPath: m_RootOrder
       value: 1
