@@ -1198,6 +1198,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1426374831}
     - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
+      propertyPath: loseMoney
+      value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036990144023944823, guid: e5f1dde8a9ce44d398e49bc374f3f1a5, type: 3}
       propertyPath: walletText
       value: 
       objectReference: {fileID: 442185361}

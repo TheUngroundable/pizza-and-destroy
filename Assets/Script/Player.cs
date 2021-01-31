@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetKeyDown("space"))
                 {
-                    //hit.transform.GetComponent<Door>().PlayOpenSound();
+                    hit.transform.gameObject.GetComponent<Door>().PlayOpenSound();
                     hit.transform.gameObject.SetActive(false);
                 }
             }

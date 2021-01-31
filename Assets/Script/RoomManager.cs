@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviour
     public float timeRemaining = 10;
     public Text timerUI;
     public int winMoney = 500;
-    public int loseMoney = -100;
+    public int loseMoney = -1000;
     public Player player;
     private bool gameStarted = false;
     private AudioSource audioSource;
@@ -77,6 +77,8 @@ public class RoomManager : MonoBehaviour
         ManageWalletUI();
         if (gameStarted)
         {
+            Debug.Log(player.wallet);
+            Debug.Log(loseMoney);
             if(player.wallet < loseMoney){
                 destructionText.enabled = true;
             } else if (timeRemaining > 0)

@@ -38,7 +38,7 @@ public class InteractableObject : MonoBehaviour
             }
         } else if(collisionGameObject.tag == "InteractableObject"){
             InteractableObject interactableObject = collisionGameObject.GetComponent<InteractableObject>();
-            if(!interactableObject.collidedWith && !player.playerIsGrabbing){
+            if(!interactableObject.collidedWith && player && !player.playerIsGrabbing){
                 interactableObject.collidedWith = true;
                 player.wallet -= interactableObject.value;
                 player.PlayLosingMoney();
@@ -51,6 +51,8 @@ public class InteractableObject : MonoBehaviour
     void PlayCollisionSounds(){
         int randomIndex = (int) (Random.Range(0f, 10.0f) % collisionSounds.Length);
         AudioClip randomCollisionSounds = collisionSounds[randomIndex];
-        audioSource.PlayOneShot(randomCollisionSounds, 0.1f);
+        if(audioSource){
+            audioSource.PlayOneShot(randomCollisionSounds, 0.1f);
+        }
     }
 }
